@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'awesome_print'
+gem 'cowsay'
+gem 'devise'
+gem 'country_select'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
