@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 <%= form_for(@profile, url: "create") do |f| %>
   
-  <div class="field">
+  <!-- <div class="field">
       <%= f.hidden_field :user_id, :value => @profile.user_id %>
-    </div>
+    </div> -->
 
   <div class="field">
     <%= label_tag("Your gender? ") %><br>
-    <%= f.text_field :gender %>
+    <%= f.text_field :gender %><br>
   </div>
 
   <div class="field">

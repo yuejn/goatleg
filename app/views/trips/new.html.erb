@@ -1,0 +1,42 @@
+<%= form_for(@trip) do |f| %>
+
+  <% if @trip.errors.any? %>
+    <div id="error">
+      <h2><%= pluralize(@trip.errors.count, "error") %></h2>
+      <ul>
+        <% @ticket.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= field_set_tag "Add Trip" do %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= select("trip", "user_id", User.all.collect { |u| [u.email, u.id] }) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :destination %>
+    <%= country_select("trip", "destination") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= date_field("trip", "start_date") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= date_field("trip", "end_date", default: 2.weeks.from_now) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+  <% end %>
+
+<% end %>

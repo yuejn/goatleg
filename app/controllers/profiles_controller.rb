@@ -1,5 +1,15 @@
 class ProfilesController < ApplicationController
   # before_action :authenticate_user!
+
+  def index
+    @profiles = Profile.all
+  end
+
+  def show
+
+    @profile = Profile.find(params[:id])
+     byebug
+  end
   
   def register
     @profile = Profile.new
@@ -12,15 +22,13 @@ class ProfilesController < ApplicationController
     
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to "http://www.google.com"}
+        format.html { redirect_to @profile}
       else
         format.html { render :register}
       end
     end
   end
 
-  def show
-  end
 
 private
   def profile_params
