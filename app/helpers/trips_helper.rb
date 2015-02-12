@@ -1,15 +1,15 @@
 module TripsHelper
 
-  def gender id
-    if Profile.find(id).gender == "m"
+  def gender g
+    if g == "m"
       "male"
     else
       "female"
     end
   end
 
-  def seeking_gender id
-    if Profile.find(id).seeking_gender == "m"
+  def seeking_gender g
+    if g == "m"
       "male"
     else
       "female"
