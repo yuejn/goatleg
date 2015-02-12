@@ -24,10 +24,9 @@
       </ul>
     </nav>
     <h3 class="text-muted">Goatleg</h3>
-  </div>
-  <% if current_user %>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-  <% else %>
+  </div> <!-- .header -->
+
+  <% if !current_user %>
     <div class="jumbotron">
       <h1>Ain't got no arms</h1>
       <p class="lead">Because goats ain't go no arms...</p>
@@ -35,16 +34,16 @@
     </div>
   <% end %>
 
-  <div id="content">
+  <div class="container">
   <%= yield %>
   </div>
 
-  <footer class="footer">
+  <div class="footer">
     <p>Brought to you by:</p>
     <p>FAB-EZY, DENGUE DAN, POWDERED MILK, JENNERGY &amp; SPAGNO</p>
-  </footer>
+  </div>
 
-</div>
+</div> <!-- .container -->
 
 </body>
 </html>

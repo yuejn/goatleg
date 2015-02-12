@@ -2,7 +2,6 @@
 
   <% if @trip.errors.any? %>
     <div class="alert alert-danger">
-      <h3><%= pluralize(@trip.errors.count, "error") %></h3>
       <ul>
         <% @trip.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -13,28 +12,43 @@
 
   <%= field_set_tag "Add Trip" do %>
 
+  <!-- 
+  <% hidden_field(:trip, 'user_id', {value: current_user.id }) %>
+
   <div class="form-group">
-    <%= f.label :user_id %>
-    <%= select("trip", "user_id", User.all.collect { |u| [u.email, u.id] }) %>
+    <%= f.label :user_id, class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= select("trip", "user_id", User.all.collect { |u| [u.email, u.id] }, { selected: current_user.id }) %>
+    </div>
+  </div>
+  -->
+
+
+  <div class="form-group">
+    <%= f.label :destination, class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= country_select("trip", "destination") %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :destination %>
-    <%= country_select("trip", "destination") %>
+    <%= f.label :start_date, class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= date_field("trip", "start_date", { class: "form-control" } ) %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :start_date %>
-    <%= date_field("trip", "start_date") %>
+    <%= f.label :end_date, class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= date_field("trip", "end_date", { default: 2.weeks.from_now, class: "form-control" }) %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :end_date %>
-    <%= date_field("trip", "end_date", default: 2.weeks.from_now) %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-default' %>
+    <div class="col-xs-offset-2 col-xs-10">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 
   <% end %>

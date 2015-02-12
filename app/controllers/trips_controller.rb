@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.all
+    @trips = @trips.destination(params[:destination]) if params[:destination].present?
   end
 
   def show
@@ -14,6 +15,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
+    @trip.user_id = current_user.id
 
     respond_to do |format|
       if @trip.save

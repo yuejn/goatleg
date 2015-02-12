@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post 'profiles/create' => 'profiles#create'
   resources :trips
   resources :profiles
-  root 'profiles#index'
+  root 'trips#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

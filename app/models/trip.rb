@@ -1,4 +1,7 @@
 class Trip < ActiveRecord::Base
+
+  scope :destination, -> (destination) { where destination: destination }
+  scope :gender, -> (gender) { where gender: gender }
   
   validates :destination, :start_date, :end_date, presence: true 
   belongs_to :user
