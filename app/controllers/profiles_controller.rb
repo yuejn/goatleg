@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
   def show
 
     @profile = Profile.find(params[:id])
-     byebug
+     #byebug
   end
   
   def register
