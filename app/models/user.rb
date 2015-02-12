@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 
   def mailboxer_email(object)
     email
+  end
 
   has_one :profile
   has_many :trips
