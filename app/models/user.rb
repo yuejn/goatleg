@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   after_create :add_profile
-
+  end
 
   def add_profile
     Profile.create(user_id:self.id)
