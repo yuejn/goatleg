@@ -11,7 +11,6 @@ class ProfilesController < ApplicationController
   
   def register
     @profile = Profile.find(User.find(current_user.id).profile.id)
-    byebug
    if @profile.present? == false
     @profile = Profile.new
     @profile.user_id = current_user.id
