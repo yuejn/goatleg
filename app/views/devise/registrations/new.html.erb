@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Register</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -26,6 +26,15 @@
   <input type="checkbox" name="eaten_goatleg" id="user_eaten_goatleg">
   
   </div>
+
+<%= f.fields_for :profile do |profile_form| %>
+      <h2><%= profile_form.label :gender %></h2>
+      <p><%= profile_form.text_field :gender %></p>
+
+      <h2><%= profile_form.label :seeking_gender %></h2>
+      <p><%= profile_form.text_field :seeking_gender %></p>
+    <% end %>
+
 
   <div class="actions">
     <%= f.submit "Sign up" %>
