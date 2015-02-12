@@ -4,4 +4,9 @@ class User < ActiveRecord::Base
   #validates :eaten_goatleg, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :trips
+  has_many :messages
+  has_one :profile
+
 end
