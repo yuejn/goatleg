@@ -6,15 +6,17 @@ class ProfilesController < ApplicationController
   end
 
   def show
-
     @profile = Profile.find(params[:id])
-     #byebug
   end
   
   def register
+    @profile = Profile.find(User.find(current_user.id).profile.id)
+   if @profile.present? == false
     @profile = Profile.new
-    @profile.user_id = 1 
-    # @profile.user_id = current_user.id
+    @profile.user_id = current_user.id
+  else
+    redirect_to @profile
+   end
   end
 
   def create
