@@ -4,7 +4,8 @@ gem 'awesome_print'
 gem 'cowsay'
 gem 'devise'
 gem 'country_select'
-
+gem 'bootstrap-sass'
+gem 'byebug'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users
   get 'profiles/register' => 'profiles#register'
   post 'profiles/create' => 'profiles#create'
   resources :trips

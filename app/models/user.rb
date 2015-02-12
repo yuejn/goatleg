@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+<<<<<<< HEAD
   acts_as_messageable
   
   # You'd, probably, want to have a separate name column instead
@@ -15,4 +16,10 @@ class User < ActiveRecord::Base
   def mailboxer_email(object)
     email
   end
+=======
+  has_one :profile
+  has_many :trips
+  has_many :messages
+
+>>>>>>> 3a92eeffd5b02e5ef05d266fc59e6903cbad0fa7
 end
