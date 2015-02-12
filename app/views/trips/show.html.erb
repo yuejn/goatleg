@@ -1,0 +1,10 @@
+
+<div class="box">
+  <h3><%= User.find(@trip.user_id)[:email] %>, aged <%= Profile.find(@trip.user_id)[:age] %></h3>
+
+  <p><%= Profile.find(@trip.user_id)[:gender] %> seeking <%= Profile.find(@trip.user_id)[:seeking_gender] %></p>
+
+  <p>
+    Visiting <strong><%= @trip.destination_name %></strong> from <strong><%= @trip.start_date.to_formatted_s(:short) %></strong> to <strong><%= @trip.end_date.to_formatted_s(:short) %></strong>
+  </p>
+</div>

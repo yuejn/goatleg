@@ -1,0 +1,13 @@
+<table>
+
+<% @trips.each do |trip| %>
+<tr>
+  <td><%= User.find(trip.user_id)[:email] %></td>
+  <td><%= Profile.find(trip.user_id)[:age] %></td>
+  <td><%= trip.destination_name %></td>
+  <td><%= trip.start_date.to_formatted_s(:short) %></td>
+  <td><%= trip.end_date.to_formatted_s(:short) %></td>
+</tr>
+<% end %>
+
+</table>

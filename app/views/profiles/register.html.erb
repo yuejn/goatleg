@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<%= form_for(@profile, url: "create") do |f| %>
+  
+  <!-- <div class="field">
+      <%= f.hidden_field :user_id, :value => @profile.user_id %>
+    </div> -->
+
+  <div class="field">
+    <%= label_tag("Your gender? ") %><br>
+    <%= f.text_field :gender %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag("You're looking for a? ") %><br>
+    <%= f.text_field :seeking_gender %>
+  </div>
+
+  <div class="field">
+    <%= label_tag("How old are you? ") %><br>
+    <%= f.number_field :age %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
