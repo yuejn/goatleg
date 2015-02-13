@@ -8,9 +8,13 @@
 </head>
 <body>
 
+<!-- <%= current_user.email %> -->
+
 <div class="container">
 
   <div class="header">
+
+    <!-- 
     <nav>
       <ul class="nav nav-pills pull-right">
         <li role="presentation" class="active"><a href="/">Home</a></li>
@@ -22,22 +26,66 @@
           <li role="presentation" class="active"><a href="/users/sign_up">Sign Up</a></li>
         <% end %>
       </ul>
-    </nav>
+    </nav> -->
+
+      <ul class="nav navbar-nav nav-pills navbar-right">
+        <li><a href="/">Home</a></li>
+        <li><%= link_to "View Trips", trips_path %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user ? current_user.email : "Account" %> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <% if current_user %>
+            <li><%= link_to "Edit Account", edit_user_registration_path %></li>
+              <% if !Profile.find(current_user.id) %>
+                <li><%= link_to "Create Profile", new_profile_path %></li>
+              <% else %>
+                <li><%= link_to "Update Profile", edit_profile_path(current_user.id) %></li>
+              <% end %>
+            <li class="divider"></li>
+            <li><%= link_to "Add Trip", new_trip_path %></li>
+            <% else %>
+              <li><%= link_to "Register", new_user_registration_path %></li>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+
+
     <h3 class="text-muted">Goatleg</h3>
   </div> <!-- .header -->
 
-  <% if !current_user %>
+  <% if current_user %>
     <div class="jumbotron">
       <h1>Ain't got no arms</h1>
-      <p class="lead">Because goats ain't go no arms...</p>
-      <p><a class="btn btn-lg btn-success" href="/users/sign_up" role="button">Sign up today, motherfucker!</a></p>
+      <p class="lead">Because goats ain't got no arms...</p>
+      <p><%= link_to "Sign up today, motherfucker!", new_user_registration_path, :class => "btn btn-lg btn-success", "role" => "button" %></p>
     </div>
   <% end %>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="https://scontent-a-sjc.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/10922879_10204619982353834_560799776413417992_n.jpg?oh=e881f2f1998a61ffaccbfd65deeb3776&oe=55580276" class="img-circle img-responsive" />
+        <p class="text-center">HAVE YOU</p>
+      </div>
+      <div class="col-md-4">
+        <img src="http://wfas-maxcdn.woodstockfarmani.netdna-cdn.com/wp-content/uploads/2009/07/albienewleg.jpg" class="img-circle img-responsive" />
+        <p class="text-center">EATEN</p>
+      </div>
+      <div class="col-md-4">
+        <img src="https://scontent-sjc.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/10177344_1540199399591821_2803772484236005738_n.jpg?oh=7ec032b42509914911475151909680c7&oe=558F774A" class="img-circle img-responsive" />
+        <p class="text-center">GOAT LEG?</p>
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+  </div>
 
   <div class="container">
   <%= yield %>
   </div>
-
+ 
   <div class="footer">
     <p>Brought to you by:</p>
     <p>FAB-EZY, DENGUE DAN, POWDERED MILK, JENNERGY &amp; SPAGNO</p>

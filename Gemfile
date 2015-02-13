@@ -4,6 +4,7 @@ gem 'awesome_print'
 gem 'cowsay'
 gem 'devise'
 gem 'country_select'
+
 gem 'bootstrap-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
