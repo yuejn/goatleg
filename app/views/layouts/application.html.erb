@@ -8,6 +8,10 @@
 </head>
 <body>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> eb22560f66fe4ef3d8acda968bc1b3cbf8aa7c64
 <div class="container">
 
   <div class="header">
@@ -37,13 +41,17 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user ? current_user.email : "Account" %> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% if current_user %>
+<<<<<<< HEAD
             <li><%= link_to "Dashboard", dashboard_index_path %></li>
             <li class="divider"></li>
+=======
+            <li><%= link_to "Profile", profile_path(current_user.profile.id) %></li>
+>>>>>>> eb22560f66fe4ef3d8acda968bc1b3cbf8aa7c64
             <li><%= link_to "Edit Account", edit_user_registration_path %></li>
-              <% if !Profile.find(current_user.id) %>
+              <% if !Profile.find(current_user.profile.id) %>
                 <li><%= link_to "Create Profile", new_profile_path %></li>
               <% else %>
-                <li><%= link_to "Update Profile", edit_profile_path(current_user.id) %></li>
+                <li><%= link_to "Update Profile", edit_profile_path(current_user.profile.id) %></li>
               <% end %>
             <li class="divider"></li>
             <li><%= link_to "Add Trip", new_trip_path %></li>
@@ -61,6 +69,36 @@
     <h3 class="text-muted">Goatleg</h3>
   </div> <!-- .header -->
 
+<<<<<<< HEAD
+=======
+  <% if !current_user %>
+    <div class="jumbotron">
+      <h1>Ain't got no arms</h1>
+      <p class="lead">Because goats ain't got no arms...</p>
+      <p><%= link_to "Sign up today, motherfucker!", new_user_registration_path, :class => "btn btn-lg btn-success", "role" => "button" %></p>
+    </div>
+  <% end %>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="https://scontent-a-sjc.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/10922879_10204619982353834_560799776413417992_n.jpg?oh=e881f2f1998a61ffaccbfd65deeb3776&oe=55580276" class="img-circle img-responsive" />
+        <p class="text-center">HAVE YOU</p>
+      </div>
+      <div class="col-md-4">
+        <img src="http://wfas-maxcdn.woodstockfarmani.netdna-cdn.com/wp-content/uploads/2009/07/albienewleg.jpg" class="img-circle img-responsive" />
+        <p class="text-center">EATEN</p>
+      </div>
+      <div class="col-md-4">
+        <img src="https://scontent-sjc.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/10177344_1540199399591821_2803772484236005738_n.jpg?oh=7ec032b42509914911475151909680c7&oe=558F774A" class="img-circle img-responsive" />
+        <p class="text-center">GOAT LEG?</p>
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+  </div>
+
+>>>>>>> eb22560f66fe4ef3d8acda968bc1b3cbf8aa7c64
   <div class="container">
   <%= yield %>
   </div>
