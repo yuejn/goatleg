@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :set_profile, only: [:edit, :update]
+
+
 
   def index
     @profiles = Profile.all
@@ -9,27 +11,40 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
   
-  def register
-    @profile = Profile.find(User.find(current_user.id).profile.id)
-   if @profile.present? == false
+  def new
     @profile = Profile.new
-    @profile.user_id = current_user.id
-  else
-    redirect_to @profile
-   end
   end
 
   def create
     @profile = Profile.new(profile_params) 
-    
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile}
       else
-        format.html { render :register}
+        # format.html { render :register}
       end
     end
   end
+
+  def update
+    respond_to do |format|
+      if @profile.update(profile_params)
+        format.html { redirect_to @profile}
+        format.json { render :show, status: :ok, location: @profile }
+      else
+        format.html { render :edit }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit
+  end
+
+  private  
+    def set_profile
+        @profile = Profile.find_by(params[:user_id])
+    end
 
 
 private
