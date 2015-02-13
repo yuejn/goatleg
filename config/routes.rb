@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+
+
+  root 'dashboard#index'
+
   devise_for :users
   resources :users
   get 'profiles/register' => 'profiles#register'
   post 'profiles/create' => 'profiles#create'
   resources :trips
   resources :profiles
-  
+  resources :dashboard, only: [:index]
   #Message 
   resources :conversations, only: [:index, :show, :new, :create] do
     member do
@@ -15,7 +19,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'trips#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
