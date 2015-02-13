@@ -14,7 +14,7 @@
 <tbody>
 <% @trips.each do |trip| %>
 <tr>
-  <td><%= link_to(trip.user.email, profile_path(trip.user_id)) %></td>
+  <td><%= link_to(trip.user.email, profile_path(trip.user.profile.id)) %></td>
   <td><%= trip.user.profile.age %></td>
   <td><%= trip.user.profile.gender %></td>
   <td><%= trip.user.profile.seeking_gender %></td>
