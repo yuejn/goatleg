@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :set_profile, only: [:edit, :update]
+
+
 
   def index
     @profiles = Profile.all
@@ -26,7 +28,7 @@ class ProfilesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @profiles.update(profile_params)
+      if @profile.update(profile_params)
         format.html { redirect_to @profile}
         format.json { render :show, status: :ok, location: @profile }
       else
@@ -35,6 +37,14 @@ class ProfilesController < ApplicationController
       end
     end
   end
+
+  def edit
+  end
+
+  private  
+    def set_profile
+        @profile = Profile.find_by(params[:user_id])
+    end
 
 
 private
