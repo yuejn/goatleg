@@ -5,6 +5,16 @@ Rails.application.routes.draw do
   post 'profiles/create' => 'profiles#create'
   resources :trips
   resources :profiles
+  
+  #Message 
+  resources :conversations, only: [:index, :show, :new, :create] do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
+
   root 'trips#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

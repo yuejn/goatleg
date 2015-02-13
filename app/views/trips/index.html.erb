@@ -14,12 +14,11 @@
 <tbody>
 <% @trips.each do |trip| %>
 <tr>
-  <td><%= User.find(trip.user_id).email %></td>
+  <td><%= link_to(User.find(trip.user_id).email, profile_path(trip.user_id)) %></td>
   <td><%= Profile.find(trip.user_id).age %></td>
-  <td><%= gender(trip.user_id) %></td>
-  <td><%= seeking_gender(trip.user_id) %></td>
+  <td><%= gender(Profile.find(trip.user_id).gender) %></td>
+  <td><%= seeking_gender(Profile.find(trip.user_id).seeking_gender) %></td>
   <td><%= link_to(trip.destination_name, trips_path(:destination => trip.destination)) %></td>
-  <!-- <td><%= trip.destination_name %></td> -->
   <td><%= trip.start_date.to_formatted_s(:short) %></td>
   <td><%= trip.end_date.to_formatted_s(:short) %></td>
 </tr>
