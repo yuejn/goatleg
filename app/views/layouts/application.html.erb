@@ -8,7 +8,6 @@
 </head>
 <body>
 
-<!-- <%= current_user.email %> -->
 
 <div class="container">
 
@@ -35,11 +34,12 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user ? current_user.email : "Account" %> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% if current_user %>
+            <li><%= link_to "Profile", profile_path(current_user.profile.id) %></li>
             <li><%= link_to "Edit Account", edit_user_registration_path %></li>
-              <% if !Profile.find(current_user.id) %>
+              <% if !Profile.find(current_user.profile.id) %>
                 <li><%= link_to "Create Profile", new_profile_path %></li>
               <% else %>
-                <li><%= link_to "Update Profile", edit_profile_path(current_user.id) %></li>
+                <li><%= link_to "Update Profile", edit_profile_path(current_user.profile.id) %></li>
               <% end %>
             <li class="divider"></li>
             <li><%= link_to "Add Trip", new_trip_path %></li>
