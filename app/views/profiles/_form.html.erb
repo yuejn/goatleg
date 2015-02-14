@@ -6,12 +6,13 @@
 
   <div class="field">
     <%= label_tag("Your gender? ") %><br>
-    <%= f.text_field :gender %>
+    
+    <%= f.select :gender, options_for_select([["male", "m"], ["female", "f"]]) %>
   </div>
 
   <div class="field">
     <%= label_tag("You're looking for a? ") %><br>
-    <%= f.text_field :seeking_gender %>
+    <%= f.select :seeking_gender, options_for_select([["male", "m"], ["female", "f"]]) %>
   </div>
 
   <div class="field">
