@@ -47,7 +47,7 @@
     <div class="btn-group" role="group" aria-label="...">
       <%= link_to "Account", new_user_registration_path, :class => "btn btn-lg btn-info", "role" => "button" %>
       <%= link_to "Update Profile", edit_profile_path(current_user.profile.id), :class => "btn btn-lg btn-info", "role" => "button" %>
-      <%= link_to "Add New Trip", new_user_registration_path, :class => "btn btn-lg btn-info", "role" => "button" %>
+      <%= link_to "Add New Trip", new_trip_path, :class => "btn btn-lg btn-info", "role" => "button" %>
     </div>
   </div>
   <div class="row">
@@ -55,8 +55,8 @@
   </div>
   <div class="row">
     <div class="btn-group" role="group" aria-label="...">
-      <%= link_to "Trips", new_user_registration_path, :class => "btn btn-lg btn-default", "role" => "button" %>
-      <%= link_to "Messages", new_user_registration_path, :class => "btn btn-lg btn-default", "role" => "button" %>
+      <%= link_to "Trips", trips_path, :class => "btn btn-lg btn-default", "role" => "button" %>
+      <%= link_to "Messages", conversations_path, :class => "btn btn-lg btn-default", "role" => "button" %>
     </div>
   </div>
 

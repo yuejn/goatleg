@@ -1,9 +1,10 @@
 class Profile < ActiveRecord::Base
 
+  mount_uploader :avatar, AvatarUploader
+
   belongs_to :user
-
   validate :form_filled_out
-
+  
   def form_filled_out
 #    byebug
     if !avatar.present?

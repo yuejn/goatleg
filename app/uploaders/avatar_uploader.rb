@@ -1,5 +1,5 @@
 # encoding: utf-8
-class AttachmentUploader < CarrierWave::Uploader::Base
+class AvatarUploader < CarrierWave::Uploader::Base
 
 include CarrierWave::MiniMagick # for resizing purposes
 storage :fog # using AWS

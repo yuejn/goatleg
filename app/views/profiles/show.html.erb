@@ -1,16 +1,25 @@
 <h2><%= @profile.user.email %></h2>
 
-<div class="well well-lg">
-<p><%= gender(@profile.gender) %> seeking <%= gender(@profile.seeking_gender) %></p>
+<div class="container well well-lg">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag(@profile.avatar_url.to_s, class: "img-responsive img-circle") %>
+    </div>
+    <div class="col-md-9">
+      <p>
+        <%= gender(@profile.gender) %> seeking <%= gender(@profile.seeking_gender) %>
+      </p>
 
-<p>
-  <strong>Age:</strong> <%= @profile.age %>
-</p>
+      <p>
+        <strong>Age:</strong> <%= @profile.age %>
+      </p>
 
-<p>
-  <strong>About:</strong> <%= simple_format(@profile.about) %></p>
+      <p>
+        <strong>About:</strong> <%= simple_format(@profile.about) %>
+      </p>
+    </div>
+  </div>
 </div>
-
 
 <% if @profile.user.trips.count > 0 %>
 <h3>Trips</h3>
@@ -32,4 +41,9 @@
 </table>
 <% else %>
 <h3>No upcoming Trips</h3>
+
+<% if @profile.user_id == current_user.id %>
+  <p><%= link_to "Add a new trip?", new_trip_path %></p>
+<% end %>
+
 <% end %>
