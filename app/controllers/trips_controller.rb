@@ -1,8 +1,13 @@
 class TripsController < ApplicationController
 
   def index
+    @profile = Profile.find(current_user.id)
+
     @trips = Trip.all
     @trips = @trips.destination(params[:destination]) if params[:destination].present?
+    @trips = @trips.gender(params[:gender]) if params[:gender].present?
+
+    @trips = @trips.sort_by &:end_date
   end
 
   def show

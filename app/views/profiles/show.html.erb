@@ -1,11 +1,15 @@
-<h2><%= @profile.user.email %></h2>
+<h2><%= @profile.username.blank? ? @profile.user.email : @profile.username%></h2>
 
 <div class="container well well-lg">
   <div class="row">
-    <div class="col-md-3">
-      <%= image_tag(@profile.avatar_url.to_s, class: "img-responsive img-circle") %>
+    <div class="col-md-4">
+      <% if @profile.avatar.blank? %>
+      <%= image_tag(Gravatar.new(@profile.user.email).image_url, class: 'img-responsive img-circle')%>
+      <% else %>
+      <%= image_tag(@profile.avatar_url.to_s, class: 'img-responsive img-circle') %>
+      <% end %>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8">
       <p>
         <%= gender(@profile.gender) %> seeking <%= gender(@profile.seeking_gender) %>
       </p>
@@ -32,11 +36,13 @@
       </tr>
     </thead>
 <% @profile.user.trips.each do |trip| %>
-    <tr>
-      <td><%= trip.destination_name %></td>
-      <td><%= trip.start_date.to_formatted_s(:short) %></td>
-      <td><%= trip.end_date.to_formatted_s(:short) %></td>
-    </tr>
+  <% if !trip.end_date.past? %>
+      <tr>
+        <td><%= trip.destination_name %></td>
+        <td><%= trip.start_date.to_formatted_s(:long) %></td>
+        <td><%= trip.end_date.to_formatted_s(:long) %></td>
+      </tr>
+  <% end %>
 <% end %>
 </table>
 <% else %>

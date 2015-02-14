@@ -1,10 +1,21 @@
 class Trip < ActiveRecord::Base
 
   scope :destination, -> (destination) { where destination: destination }
-  scope :gender, -> (gender) { where gender: gender }
-  
+  scope :gender, -> (gender) { 
+    joins('LEFT JOIN users ON trips.user_id = users.id 
+      LEFT JOIN profiles ON profiles.user_id = users.id').where('profiles.gender = ?', gender)
+  }
+
   validates :destination, :start_date, :end_date, presence: true 
   belongs_to :user
+
+  # has_many :profile, through: :user
+
+  # def self.gender gender
+  #   ids = Trip.all.map(&:user_id)
+  #   profile_ids = Profile.where(gender: gender, user_id: ids).map(&:user_id)
+  #   Trip.where(user_id: profile_ids)
+  # end
 
   def destination_name
     country = ISO3166::Country[destination]

@@ -14,15 +14,16 @@
 
 <tbody>
 <% @trips.each do |trip| %>
-<tr>
-  <td><%= link_to(trip.user.email, profile_path(trip.user.profile.id)) %></td>
-  <td><%= trip.user.profile.age %></td>
-  <td><%= trip.user.profile.gender %></td>
-  <td><%= trip.user.profile.seeking_gender %></td>
-  <td><%= link_to(trip.destination_name, trips_path(:destination => trip.destination)) %></td>
-  <td><%= trip.start_date.to_formatted_s(:short) %></td>
-  <td><%= trip.end_date.to_formatted_s(:short) %></td>
-</tr>
+  <tr<%= trip.end_date.past? ? " class=\"active\"".html_safe : nil %>>
+    <td><%= link_to(trip.user.profile.username, profile_path(trip.user.profile.id)) %></td>
+    <td><%= trip.user.profile.age %></td>
+    <td><%= link_to(trip.user.profile.gender, trips_path(:gender => trip.user.profile.gender)) %></td>
+    <td><%= trip.user.profile.seeking_gender %></td>
+    <td><%= link_to(trip.destination_name, trips_path(:destination => trip.destination)) %></td>
+    <td><%= trip.start_date.to_formatted_s(:short) %></td>
+    <td><%= trip.end_date.to_formatted_s(:long) %></td>
+  </tr>
+
 <% end %>
 </tbody>
 

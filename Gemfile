@@ -12,6 +12,7 @@ gem 'fog'
 gem 'mini_magick'
 
 gem 'bootstrap-sass'
+gem 'gravatar-ultimate'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

@@ -15,6 +15,11 @@
   <%= field_set_tag "Update/Edit Profile" do %>
 
   <div class="form_group">
+    <%= f.label :username %>
+    <br /><%= f.text_field :username %>
+  </div>
+
+  <div class="form_group">
     <%= f.label :gender %>
     <br /><%= select('profile', 'gender', %w[m f]) %>
   </div>
