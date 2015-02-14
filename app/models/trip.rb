@@ -17,9 +17,9 @@ class Trip < ActiveRecord::Base
 #    byebug
     if !destination.present?
       errors.add(:destination, "Fill out a destination, yo!")
-    elseif !start_date.present?
+    elsif !start_date.present?
       errors.add(:start_date, "Fill in a start date!")
-    elseif !end_date.present?
+    elsif !end_date.present?
       errors.add(:end_date, "Fill in a end date!")
     end
   end

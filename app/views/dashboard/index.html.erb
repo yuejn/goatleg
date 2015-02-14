@@ -3,7 +3,7 @@
 <div class="jumbotron">
   <h1>Goatleg</h1>
   <p class="lead">Because goats ain't got no arms...</p>
-  <p>Finally there's an app that allows the tightly-knit community of goat leg consumers to preserve their unique lifestyle with one another from anywhere in the world.</p>
+  <p>Finally, there's an app that allows the tightly-knit community of goat leg consumers to preserve their unique lifestyle with one another from anywhere in the world.</p>
   <p>And now it's just one click away.</p>
   <p><%= link_to "Sign up today, motherfucker!", new_user_registration_path, :class => "btn btn-lg btn-success", "role" => "button" %></p>
 <br /><br /><br />
@@ -42,12 +42,11 @@
 
 <br /><br />
 
-
 <div class="container text-center">
   <div class="row">
     <div class="btn-group" role="group" aria-label="...">
       <%= link_to "Account", new_user_registration_path, :class => "btn btn-lg btn-info", "role" => "button" %>
-      <%= link_to "Update Profile", new_user_registration_path, :class => "btn btn-lg btn-info", "role" => "button" %>
+      <%= link_to "Update Profile", edit_profile_path(current_user.profile.id), :class => "btn btn-lg btn-info", "role" => "button" %>
       <%= link_to "Add New Trip", new_user_registration_path, :class => "btn btn-lg btn-info", "role" => "button" %>
     </div>
   </div>

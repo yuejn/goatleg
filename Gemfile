@@ -1,9 +1,15 @@
 source 'https://rubygems.org'
+
 gem 'mailboxer'
 gem 'awesome_print'
 gem 'cowsay'
 gem 'devise'
 gem 'country_select'
+
+gem 'carrierwave'
+gem 'figaro'
+gem 'fog'
+gem 'mini_magick'
 
 gem 'bootstrap-sass'
 

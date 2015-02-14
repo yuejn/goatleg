@@ -1,26 +1,48 @@
-<%= form_for(@profile) do |f| %>
+<%= form_for @profile, html: { multipart: true, class: 'form-horizontal' }  do |f| %>
   
-  <div class="field">
-      <%= f.hidden_field :user_id, :value => @profile.user_id %>
+  <%= f.hidden_field :user_id, :value => @profile.user_id %>
+
+  <% if @profile.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
+  <% end %>
 
-  <div class="field">
-    <%= label_tag("Your gender? ") %><br>
-    <%= f.text_field :gender %>
+  <%= field_set_tag "Update/Edit Profile" do %>
+
+  <div class="form_group">
+    <%= f.label :gender %>
+    <br /><%= select('profile', 'gender', %w[m f]) %>
   </div>
 
-  <div class="field">
-    <%= label_tag("You're looking for a? ") %><br>
-    <%= f.text_field :seeking_gender %>
+  <div class="form_group">
+    <%= f.label :seeking_gender %>   
+    <br /><%= select('profile', 'seeking_gender', %w[m f]) %>
+
   </div>
 
-  <div class="field">
-    <%= label_tag("How old are you? ") %><br>
-    <%= f.number_field :age %>
+  <div class="form_group">
+    <%= f.label :age %>
+    <br /><%= f.number_field :age %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form_group">
+    <%= f.label :avatar %>
+    <br /><%= f.file_field :avatar %>
   </div>
+  <div class="form_group">
+    <%= f.label :about %>
+    <br /><%= f.text_area :about %>
+  </div>
+
+  <div class="form_group">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+
+  <% end %>
 
 <% end %>

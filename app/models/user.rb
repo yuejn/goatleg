@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
-  validates :agree, :acceptance => true, :on => :create
   acts_as_messageable
   
   # You'd, probably, want to have a separate name column instead
